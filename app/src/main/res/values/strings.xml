@@ -2,4 +2,13 @@
     <string name="app_name">WeatherApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_for_area">Search for Area</string>
+    <string name="search">Search</string>
+    <string name="error_message">Error Message: </string>
+    <string name="try_again">Try Again</string>
+    <string name="remember_spelling_is_important">Remember spelling is important.</string>
+    <string name="error_code">Error Code: </string>
+    <string name="mini_temp">Mini Temp: </string>
+    <string name="max_temp">Max Temp: </string>
+    <string name="more_information">More Information</string>
 </resources>

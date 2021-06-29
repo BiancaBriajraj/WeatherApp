@@ -18,5 +18,9 @@
         android:id="@+id/detailsFragment"
         android:name="com.example.weatherapp.view.DetailsFragment"
         android:label="Further Details"
-        tools:layout="@layout/fragment_details" />
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="currentWeatherInfo"
+            app:argType="com.example.weatherapp.model.WeatherInfo" />
+    </fragment>
 </navigation>
