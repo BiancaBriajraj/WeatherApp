@@ -11,4 +11,17 @@
     <string name="mini_temp">Mini Temp: </string>
     <string name="max_temp">Max Temp: </string>
     <string name="more_information">More Information</string>
+    <string name="city_code">City Code: </string>
+    <string name="humidity">Humidity: </string>
+    <string name="pressure">Pressure: </string>
+    <string name="tempeture">Tempeture </string>
+    <string name="feels_like">Feels Like: </string>
+    <string name="sunrise">Sunrise: </string>
+    <string name="wind">Wind </string>
+    <string name="speed">Speed: </string>
+    <string name="weather">Weather: </string>
+    <string name="sunset">Sunset: </string>
+    <string name="timezone">Timezone: </string>
+    <string name="gust">Gust: </string>
+    <string name="degree">Degree: </string>
 </resources>

@@ -1,13 +1,10 @@
 package com.example.weatherapp.view
 
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -15,7 +12,7 @@ import com.example.weatherapp.databinding.FragmentListBinding
 import com.example.weatherapp.model.CustomCallback
 import com.example.weatherapp.model.WeatherInfo
 import com.example.weatherapp.viewModel.WeatherViewModel
-import kotlinx.android.synthetic.main.fragment_list.*
+
 
 
 class ListFragment : Fragment() {
@@ -37,11 +34,11 @@ class ListFragment : Fragment() {
     @SuppressLint("WrongConstant")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.cloudImage.visibility= View.VISIBLE
         viewModel = ViewModelProvider(this).get(WeatherViewModel::class.java)
 
         binding.searchButton.setOnClickListener {
-
+            binding.cloudImage.visibility= View.GONE
             binding.searchLayout.visibility = View.GONE
             binding.errorLayout.visibility = View.GONE
             val userInput = binding.searchText.text.toString()
