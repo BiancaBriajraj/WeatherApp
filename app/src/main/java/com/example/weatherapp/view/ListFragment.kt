@@ -13,21 +13,16 @@ import com.example.weatherapp.model.CustomCallback
 import com.example.weatherapp.model.WeatherInfo
 import com.example.weatherapp.viewModel.WeatherViewModel
 
-
-
 class ListFragment : Fragment() {
 
     private lateinit var binding: FragmentListBinding
-
     private lateinit var viewModel: WeatherViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        // Inflate the layout for this fragment
+    ): View { // Inflate the layout for this fragment
         binding = FragmentListBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
@@ -41,6 +36,7 @@ class ListFragment : Fragment() {
             binding.cloudImage.visibility= View.GONE
             binding.searchLayout.visibility = View.GONE
             binding.errorLayout.visibility = View.GONE
+
             val userInput = binding.searchText.text.toString()
             binding.progressBarLoading.visibility = View.VISIBLE
             viewModel.getInformation(userInput, object : CustomCallback {
@@ -53,8 +49,7 @@ class ListFragment : Fragment() {
 
                     binding.moreInfoButton.setOnClickListener {
                         Navigation.findNavController(it).navigate(
-                            ListFragmentDirections.actionListFragmentToDetailsFragment(value)
-                        )
+                            ListFragmentDirections.actionListFragmentToDetailsFragment(value))
                     }
                 }
 
@@ -64,12 +59,9 @@ class ListFragment : Fragment() {
                     binding.errorImageView.visibility = View.VISIBLE
                     binding.errorCodeView.append(errorCode.toString())
                     binding.errorMessgae.append(message)
-
                 }
             })
-
         }
-
     }
 }
 
