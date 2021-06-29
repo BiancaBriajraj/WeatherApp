@@ -124,31 +124,18 @@
         android:id="@+id/detailsSpeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:text="@string/speed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailsWindTitle" />
-
-    <TextView
-        android:id="@+id/detailsGust"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
-        android:layout_marginLeft="88dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/gust"
-        app:layout_constraintStart_toEndOf="@+id/detailsSpeed"
         app:layout_constraintTop_toBottomOf="@+id/detailsWindTitle" />
 
     <TextView
         android:id="@+id/detailsDeg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginLeft="80dp"
         android:layout_marginTop="16dp"
         android:text="@string/degree"
-        app:layout_constraintStart_toEndOf="@+id/detailsGust"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailsWindTitle" />
 
     <TextView
@@ -157,8 +144,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:text="@string/pressure"
+        app:layout_constraintEnd_toStartOf="@+id/detailsHumidity"
+        app:layout_constraintHorizontal_bias="0.163"
         app:layout_constraintStart_toEndOf="@+id/detailsFeelLike"
         app:layout_constraintTop_toBottomOf="@+id/detailsTempTitle" />
 
@@ -166,11 +155,20 @@
         android:id="@+id/detailsHumidity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="60dp"
         android:layout_marginTop="16dp"
         android:text="@string/humidity"
-        app:layout_constraintStart_toEndOf="@+id/detailsPressure"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailsTempTitle" />
+
+    <TextView
+        android:id="@+id/detailsGust"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/gust"
+        app:layout_constraintEnd_toStartOf="@+id/detailsDeg"
+        app:layout_constraintHorizontal_bias="0.399"
+        app:layout_constraintStart_toEndOf="@+id/detailsSpeed"
+        app:layout_constraintTop_toBottomOf="@+id/detailsWindTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
