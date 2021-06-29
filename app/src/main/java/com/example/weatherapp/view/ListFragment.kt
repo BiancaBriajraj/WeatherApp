@@ -12,7 +12,6 @@ import com.example.weatherapp.R
 import com.example.weatherapp.databinding.FragmentListBinding
 import com.example.weatherapp.model.CustomCallback
 import com.example.weatherapp.model.WeatherInfo
-import com.example.weatherapp.viewModel.ItemAdapter
 import com.example.weatherapp.viewModel.WeatherViewModel
 
 
@@ -21,8 +20,6 @@ class ListFragment : Fragment() {
     private  lateinit var binding: FragmentListBinding
 
     private lateinit var viewModel: WeatherViewModel
-
-    private var listAdapter = ItemAdapter(arrayListOf())
 
       override  fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -38,32 +35,26 @@ class ListFragment : Fragment() {
        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
 
-            binding.searchText.setText(" ")
-
             viewModel = ViewModelProvider(this).get(WeatherViewModel::class.java)
 
             binding.searchButton.setOnClickListener {
                 val userInput = binding.searchText.text.toString()
                 viewModel.getInformation(userInput,object : CustomCallback {
-                    override fun onSuccess(value: WeatherInfo) {
-                        val v1=  value
-                        binding.testingId.text = value.name
-                    }
+                         override fun onSuccess(value: WeatherInfo) {
+                                val v1=  value
+                                binding.testingId.text = value.name
+                           }
 
-                    override fun onFailure(message: String) {
-                        binding.testingId.text = message
-                    }
+                        override fun onFailure(errorCode:Int ,message: String) {
+                                binding.testingId.text = message
+                        }
                 })
 
             }
             binding.floatingActionButton.setOnClickListener {
-                Navigation.findNavController(it)
-                    .navigate(R.id.action_listFragment_to_detailsFragment)
+                Navigation.findNavController(it).navigate(R.id.action_listFragment_to_detailsFragment)
             }
         }
-
-
-
     }
 
 

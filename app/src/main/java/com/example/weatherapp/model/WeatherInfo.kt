@@ -2,8 +2,6 @@ package com.example.weatherapp.model
 
 import com.google.gson.annotations.SerializedName
 
-
-
 data class WeatherInfo(
     val coord: Coord,
     val weather: ArrayList<Weather>,
@@ -62,14 +60,7 @@ data class Sys(
     val sunrise: Int,
     val sunset: Int)
 
-/*data class WeatherInfo(
-    val name:String,
-    val realname:String,
-    val team:String,
-    val firstappearance:String,
-    val createdby:String,
-    val publisher:String,
-    val imageurl:String,
-    val bio:String)*/
+
+
 
 
