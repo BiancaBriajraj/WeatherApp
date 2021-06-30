@@ -25,32 +25,31 @@ class DetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         arguments?.let {
             val myData = it.getParcelable<WeatherInfo>("currentWeatherInfo")
-            if (myData != null){
+            myData?.apply {
                 binding.detailsCityName.text = myData.name
                 binding.apply {
-                    detailsLatitude.text = getString(R.string.latitude, myData.coord.lat.toString())
-                    detailsLongitude.text = getString(R.string.longitude, myData.coord.lon.toString())
-                    detailsMinTemp.text = getString(R.string.mini_temp, convertToCelsuis(myData.main.tempMin).toString())
-                    detailsMaxTemp.text = getString(R.string.max_temp, convertToCelsuis(myData.main.tempMax).toString())
-                    detailsFeelLike.text = getString(R.string.feels_like, convertToCelsuis(myData.main.feelsLike).toString())
-                    detailsPressure.append(" ${myData.main.pressure}%")
-                    detailsHumidity.append(" ${myData.main.humidity}hPa")
-                    detailsCityCode.append(" ${myData.cod}")
-                    detailTimeZone.append(" ${myData.timezone}")
-                    detailsSunrise.append(" ${myData.sys.sunrise}")
-                    detailsSunrset.append(" ${myData.sys.sunset}")
-                    for (i in 0 .. myData.weather.size.minus(1)){
-                        val mModel = myData.weather[i]
-                        val weatherDetails = " ${mModel.main}, ${mModel.description}"
+                    detailsLatitude.text = getString(R.string.latitude, coord.lat.toString())
+                    detailsLongitude.text = getString(R.string.longitude, coord.lon.toString())
+                    detailsMinTemp.text = getString(R.string.mini_temp, convertToCelsuis(main.tempMin).toString())
+                    detailsMaxTemp.text = getString(R.string.max_temp, convertToCelsuis(main.tempMax).toString())
+                    detailsFeelLike.text = getString(R.string.feels_like, convertToCelsuis(main.feelsLike).toString())
+                    detailsPressure.append(" ${main.pressure}%")
+                    detailsHumidity.append(" ${main.humidity}hPa")
+                    detailsCityCode.append(" $cod")
+                    detailTimeZone.append(" $timezone")
+                    detailsSunrise.append(" ${sys.sunrise}")
+                    detailsSunrset.append(" ${sys.sunset}")
+                    weather.forEach { wObj ->
+                        val weatherDetails = " ${wObj.main}, ${wObj.description}"
                         detailsWeaterTitle.append(weatherDetails)
                     }
-                    detailsSpeed.text = getString(R.string.speed, myData.wind.speed.toString())
-                    detailsGust.text = getString(R.string.gust, myData.wind.gust.toString())
-                    detailsDeg.text = getString(R.string.degree, myData.wind.deg.toString())
+                    detailsSpeed.text = getString(R.string.speed, wind.speed.toString())
+                    detailsGust.text = getString(R.string.gust, wind.gust.toString())
+                    detailsDeg.text = getString(R.string.degree, wind.deg.toString())
                 }
             }
 
         }
     }
-    private fun convertToCelsuis(kelvin :Double) : Int = (kelvin-281.86).roundToInt()
+    private fun convertToCelsuis(kelvin: Double): Int = (kelvin - 281.86).roundToInt()
 }
