@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.example.weatherapp.R
 import com.example.weatherapp.databinding.FragmentDetailsBinding
 import com.example.weatherapp.model.WeatherInfo
+import kotlin.math.roundToInt
 
 class DetailsFragment : Fragment() {
 
@@ -27,26 +28,29 @@ class DetailsFragment : Fragment() {
             if (myData != null){
                 binding.detailsCityName.text = myData.name
                 binding.apply {
-                    detailsMinTemp.text = getString(R.string.mini_temp, myData.main.tempMin.toString())
-                    detailsMaxTemp.append(" ${myData.main.tempMax}")
-                    detailsFeelLike.append(" ${myData.main.feelsLike}")
-                    detailsPressure.append(" ${myData.main.pressure}")
-                    detailsHumidity.append(" ${myData.main.humidity}")
+                    detailsLatitude.text = getString(R.string.latitude, myData.coord.lat.toString())
+                    detailsLongitude.text = getString(R.string.longitude, myData.coord.lon.toString())
+                    detailsMinTemp.text = getString(R.string.mini_temp, convertToCelsuis(myData.main.tempMin).toString())
+                    detailsMaxTemp.text = getString(R.string.max_temp, convertToCelsuis(myData.main.tempMax).toString())
+                    detailsFeelLike.text = getString(R.string.feels_like, convertToCelsuis(myData.main.feelsLike).toString())
+                    detailsPressure.append(" ${myData.main.pressure}%")
+                    detailsHumidity.append(" ${myData.main.humidity}hPa")
                     detailsCityCode.append(" ${myData.cod}")
                     detailTimeZone.append(" ${myData.timezone}")
                     detailsSunrise.append(" ${myData.sys.sunrise}")
                     detailsSunrset.append(" ${myData.sys.sunset}")
                     for (i in 0 .. myData.weather.size.minus(1)){
                         val mModel = myData.weather[i]
-                        val weatherDetails = "${mModel.main}, ${mModel.description}"
+                        val weatherDetails = " ${mModel.main}, ${mModel.description}"
                         detailsWeaterTitle.append(weatherDetails)
                     }
-                    detailsSpeed.append(" ${myData.wind.speed}")
-                    detailsGust.append(" ${myData.wind.gust}")
-                    detailsDeg.append(" ${myData.wind.deg}")
+                    detailsSpeed.text = getString(R.string.speed, myData.wind.speed.toString())
+                    detailsGust.text = getString(R.string.gust, myData.wind.gust.toString())
+                    detailsDeg.text = getString(R.string.degree, myData.wind.deg.toString())
                 }
             }
 
         }
     }
+    private fun convertToCelsuis(kelvin :Double) : Int = (kelvin-281.86).roundToInt()
 }

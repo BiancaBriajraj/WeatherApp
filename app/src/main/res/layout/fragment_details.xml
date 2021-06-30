@@ -11,7 +11,7 @@
         android:id="@+id/detailsCityName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="56dp"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,18 +25,16 @@
         android:layout_marginTop="16dp"
         android:text="@string/mini_temp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailsCityName" />
+        app:layout_constraintTop_toBottomOf="@+id/detailsLongitude" />
 
     <TextView
         android:id="@+id/detailsMaxTemp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="196dp"
-        android:layout_marginLeft="196dp"
         android:layout_marginTop="16dp"
         android:text="@string/max_temp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailsCityName" />
+        app:layout_constraintTop_toBottomOf="@+id/detailsLatitude" />
 
     <TextView
         android:id="@+id/detailsCityCode"
@@ -155,7 +153,7 @@
         android:id="@+id/detailsHumidity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:text="@string/humidity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailsTempTitle" />
@@ -170,5 +168,23 @@
         app:layout_constraintHorizontal_bias="0.399"
         app:layout_constraintStart_toEndOf="@+id/detailsSpeed"
         app:layout_constraintTop_toBottomOf="@+id/detailsWindTitle" />
+
+    <TextView
+        android:id="@+id/detailsLongitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/longitude"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailsCityName" />
+
+    <TextView
+        android:id="@+id/detailsLatitude"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/latitude"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailsCityName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

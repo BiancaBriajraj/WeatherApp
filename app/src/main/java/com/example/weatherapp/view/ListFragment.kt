@@ -13,6 +13,7 @@ import com.example.weatherapp.databinding.FragmentListBinding
 import com.example.weatherapp.model.CustomCallback
 import com.example.weatherapp.model.WeatherInfo
 import com.example.weatherapp.viewModel.WeatherViewModel
+import kotlin.math.roundToInt
 
 class ListFragment : Fragment() {
 
@@ -45,8 +46,8 @@ class ListFragment : Fragment() {
                     binding.progressBarLoading.visibility = View.GONE
                     binding.searchLayout.visibility = View.VISIBLE
                     binding.cityNameSearchLayoutView.text = value.name
-                    binding.minTempSearchLayoutView.text = getString(R.string.mini_temp, value.main.tempMin.toString())
-                    binding.maxTempSearchLayoutView.append(" ${value.main.tempMax}")
+                    binding.minTempSearchLayoutView.text = getString(R.string.mini_temp, convertToCelsuis(value.main.tempMin).toString())
+                    binding.maxTempSearchLayoutView.text = getString(R.string.max_temp, convertToCelsuis(value.main.tempMax).toString())
 
                     binding.moreInfoButton.setOnClickListener {
                         Navigation.findNavController(it).navigate(
@@ -64,6 +65,7 @@ class ListFragment : Fragment() {
             })
         }
     }
+    private fun convertToCelsuis(kelvin :Double) : Int = (kelvin-281.86).roundToInt()
 }
 
 

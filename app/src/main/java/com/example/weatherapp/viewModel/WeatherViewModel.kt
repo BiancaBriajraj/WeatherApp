@@ -1,8 +1,6 @@
 package com.example.weatherapp.viewModel
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.weatherapp.model.ApiService
 import com.example.weatherapp.model.WeatherInfo
@@ -15,8 +13,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class WeatherViewModel:ViewModel() {
 
-    private val _list  = MutableLiveData<WeatherInfo>()
-    val list: LiveData<WeatherInfo> get() = _list
     private val BASE_URL ="https://api.openweathermap.org/"
     private val API_KEY = "38c00111afac170f911d0425f161f93a"
 
@@ -36,7 +32,6 @@ class WeatherViewModel:ViewModel() {
                 if (!response.isSuccessful ) {
                     cb.onFailure(response.code(), response.message())
                 }else {
-                    _list.value = response.body()!!
                     cb.onSuccess(response.body()!!)
                 }
            }
