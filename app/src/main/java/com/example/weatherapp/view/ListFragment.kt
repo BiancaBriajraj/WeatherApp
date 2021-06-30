@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import com.example.weatherapp.R
 import com.example.weatherapp.databinding.FragmentListBinding
 import com.example.weatherapp.model.CustomCallback
 import com.example.weatherapp.model.WeatherInfo
@@ -44,8 +45,8 @@ class ListFragment : Fragment() {
                     binding.progressBarLoading.visibility = View.GONE
                     binding.searchLayout.visibility = View.VISIBLE
                     binding.cityNameSearchLayoutView.text = value.name
-                    binding.minTempSearchLayoutView.append(value.main.tempMin.toString())
-                    binding.maxTempSearchLayoutView.append(value.main.tempMax.toString())
+                    binding.minTempSearchLayoutView.text = getString(R.string.mini_temp, value.main.tempMin.toString())
+                    binding.maxTempSearchLayoutView.append(" ${value.main.tempMax}")
 
                     binding.moreInfoButton.setOnClickListener {
                         Navigation.findNavController(it).navigate(
@@ -53,12 +54,12 @@ class ListFragment : Fragment() {
                     }
                 }
 
-                override fun onFailure(errorCode: Int, message: String) {
+                override fun onFailure(code: Int, message: String) {
                     binding.progressBarLoading.visibility = View.GONE
                     binding.errorLayout.visibility = View.VISIBLE
                     binding.errorImageView.visibility = View.VISIBLE
-                    binding.errorCodeView.append(errorCode.toString())
-                    binding.errorMessgae.append(message)
+                    binding.errorCodeView.append(" ${code}")
+                    binding.errorMessgae.append(" ${message}")
                 }
             })
         }

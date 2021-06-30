@@ -8,7 +8,7 @@
     <string name="try_again">Try Again</string>
     <string name="remember_spelling_is_important">Remember spelling is important.</string>
     <string name="error_code">Error Code: </string>
-    <string name="mini_temp">Mini Temp: </string>
+    <string name="mini_temp">Mini Temp: %s </string>
     <string name="max_temp">Max Temp: </string>
     <string name="more_information">More Information</string>
     <string name="city_code">City Code: </string>
